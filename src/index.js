@@ -9,8 +9,7 @@ import "@pnotify/core/dist/BrightTheme.css";
 import * as Confirm from "@pnotify/confirm";
 import "@pnotify/confirm/dist/PNotifyConfirm.css";
 
-
-const containerRef = document.querySelector(".main-container")
+const containerRef = document.querySelector(".main-container");
 const inputRef = document.querySelector('.search-input');
 
 function appendMarkUp(array) {
@@ -20,16 +19,38 @@ function appendMarkUp(array) {
   }
     containerRef.insertAdjacentHTML('beforeend', markUp( array))
 };
-
 function cleanList() {
   containerRef.innerHTML = "" 
-}
- 
-function markUp(array) {
+};
+ function markUp(array) {
   if (array.length === 1) {
     return templateCountry(array);
   };
-  console.log(templateCountry(array)); return templateCountryList(array);
+ return templateCountryList(array);
+};
+function showError() {
+  error({
+    title: "Ошибка!!",
+    text:
+      "Хитер харе страдать херней, у меня загрузка долгая....",
+    modules: new Map([
+      [
+        Confirm,
+        {
+          confirm: true,
+          buttons: [
+            {
+              text: "Ok",
+              primary: true,
+              click: notice => {
+                notice.close();
+              }
+            }
+          ]
+        }
+      ]
+    ])
+  });
 };
 
 
@@ -49,32 +70,7 @@ inputRef.addEventListener('input', debounce(300, event => {
 
 }));
 
-console.log(showError.error)
 
-function showError() {
-  error({
-    title: "Ошибка!!",
-    text:
-      "Найдено слишком много совпадений введите имя точнее",
-    modules: new Map([
-      [
-        Confirm,
-        {
-          confirm: true,
-          buttons: [
-            {
-              text: "Ok",
-              primary: true,
-              click: notice => {
-                notice.close();
-              }
-            }
-          ]
-        }
-      ]
-    ])
-  });
-}
 
 
 
