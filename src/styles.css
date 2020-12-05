@@ -1,10 +1,6 @@
 html {
   box-sizing: border-box;
 }
-div {
-  margin-left: 50px;
-  margin-right: 50px;
-}
 *,
 *::before,
 *::after {
@@ -34,10 +30,22 @@ h2 {
 .country-info {
   width: 350px;
 }
-.container {
+.main-container {
   margin: 0 auto;
 }
 .list-li {
+  margin-top: 10px;
   font-size: 18px;
-  margin-left: 40%;
+  margin-left: 45%;
+}
+#page-container {
+  margin: 5vh;
+  padding: 0;
+  height: 90vh;
+  box-sizing: border-box;
+  overflow: auto;
+  position: relative;
+}
+.flag_container {
+  margin-left: 40px;
 }
